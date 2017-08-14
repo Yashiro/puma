@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.puma.biz.dao.ClientDao">
+
+    <select id="find" resultType="ClientEntity">
+        SELECT
+        *
+        FROM
+        Client
+        LEFT JOIN
+        ClientAddition
+        ON
+        Client.ClientName = ClientAddition.ClientName
+        LEFT JOIN
+        ClientConfig
+        ON
+        Client.ClientName = ClientConfig.ClientName
+        LEFT JOIN
+        ClientConnect
+        ON
+        Client.ClientName = ClientConnect.ClientName
+        LEFT JOIN
+        ClientAck
+        ON
+        Client.ClientName = ClientAck.ClientName
+        WHERE
+        Client.ClientName = #{clientName}
+    </select>
+
+    <select id="findAll" resultType="ClientEntity">
+        SELECT
+        *
+        FROM
+        Client
+        LEFT JOIN
+        ClientAddition
+        ON
+        Client.ClientName = ClientAddition.ClientName
+        LEFT JOIN
+        ClientConfig
+        ON
+        Client.ClientName = ClientConfig.ClientName
+        LEFT JOIN
+        ClientConnect
+        ON
+        Client.ClientName = ClientConnect.ClientName
+        LEFT JOIN
+        ClientAck
+        ON
+        Client.ClientName = ClientAck.ClientName
+    </select>
+
+    <insert id="insert" parameterType="ClientEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        Client
+        (
+        ClientName
+        )
+        VALUES
+        (
+        #{clientName}
+        )
+    </insert>
+
+    <update id="update" parameterType="ClientEntity" useGeneratedKeys="true" keyProperty="id">
+        UPDATE
+        Client
+        SET
+        ClientName = #{clientName}
+        WHERE
+        ClientName = #{clientName}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM
+        Client
+        WHERE
+        ClientName = #{clientName}
+    </delete>
+
+</mapper>

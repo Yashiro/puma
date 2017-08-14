@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.puma.biz.dao.ClientAlarmStrategyDao">
+
+    <select id="find" resultType="ClientAlarmStrategyEntity">
+        SELECT
+        *
+        FROM
+        ClientAlarmStrategy
+        WHERE
+        ClientName = #{clientName}
+    </select>
+
+    <insert id="insert" parameterType="ClientAlarmStrategyEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        ClientAlarmStrategy
+        (
+        ClientName,
+        NoAlarm,
+        LinearAlarm,
+        LinearAlarmIntervalInSecond,
+        ExponentialAlarm,
+        MinExponentialAlarmIntervalInSecond,
+        MaxExponentialAlarmIntervalInSecond
+        )
+        VALUES
+        (
+        #{clientName},
+        #{noAlarm},
+        #{linearAlarm},
+        #{linearAlarmIntervalInSecond},
+        #{exponentialAlarm},
+        #{minExponentialAlarmIntervalInSecond},
+        #{maxExponentialAlarmIntervalInSecond}
+        )
+    </insert>
+
+    <update id="update" parameterType="ClientAlarmStrategyEntity">
+        UPDATE
+        ClientAlarmStrategy
+        SET
+        NoAlarm = #{noAlarm},
+        LinearAlarm = #{linearAlarm},
+        LinearAlarmIntervalInSecond = #{linearAlarmIntervalInSecond},
+        ExponentialAlarm = #{exponentailAlarm},
+        MinExponentialAlarmIntervalInSecond = #{minExponentialAlarmIntervalInSecond},
+        MaxExponentialAlarmIntervalInSecond = #{maxExponentialAlarmIntervalInSecond}
+        WHERE
+        ClientName = #{clientName}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM
+        ClientAlarmStrategy
+        WHERE
+        ClientName = #{clientName}
+    </delete>
+
+</mapper>

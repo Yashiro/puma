@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dianping.puma.biz.dao.ClientAlarmDataDao">
+
+    <select id="find" resultType="ClientAlarmDataEntity">
+        SELECT
+        *
+        FROM
+        ClientAlarmData
+        WHERE
+        ClientName = #{clientName}
+    </select>
+
+    <insert id="insert" parameterType="ClientAlarmDataEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+        ClientAlarmData
+        (
+        ClientName,
+        PullTimeDelayInSecond,
+        PushTimeDelayInSecond
+        )
+        VALUES
+        (
+        #{clientName},
+        #{pullTimeDelayInSecond},
+        #{pushTimeDelayInSecond}
+        )
+    </insert>
+
+    <update id="update" parameterType="ClientAlarmDataEntity">
+        UPDATE
+        ClientAlarmData
+        SET
+        PullTimeDelayInSecond = #{pullTimeDelayInSecond},
+        PushTimeDelayInSecond = #{pushTimeDelayInSecond}
+        WHERE
+        ClientName = #{clientName}
+    </update>
+
+    <update id="updatePullTimeDelay" parameterType="ClientAlarmDataEntity">
+        UPDATE
+        ClientAlarmData
+        SET
+        PullTimeDelayInSecond = #{pullTimeDelayInSecond}
+        WHERE
+        ClientName = #{clientName}
+    </update>
+
+    <update id="updatePushTimeDelay" parameterType="ClientAlarmDataEntity">
+        UPDATE
+        ClientAlarmData
+        SET
+        PushTimeDelayInSecond = #{pushTimeDelayInSecond}
+        WHERE
+        ClientName = #{clientName}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM
+        ClientAlarmData
+        WHERE
+        ClientName = #{clientName}
+    </delete>
+
+</mapper>

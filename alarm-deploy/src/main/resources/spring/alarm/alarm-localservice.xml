@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="converter" class="com.dianping.puma.common.convert.ModelMapperConverter" />
+
+    <bean id="pumaAlarmServerHeartbeatService"
+          class="com.dianping.puma.alarm.ha.service.memory.MemoryAlarmServerHeartbeatService"/>
+
+    <bean id="pumaAlarmServerLeaderService"
+          class="com.dianping.puma.alarm.ha.service.memory.MemoryAlarmServerLeaderService"/>
+
+    <bean id="pumaClientService"
+          class="com.dianping.puma.biz.service.memory.MemoryClientService" />
+
+    <bean id="pumaClientAlarmDataService"
+          class="com.dianping.puma.alarm.core.service.memory.MemoryClientAlarmDataService" />
+
+    <bean id="pumaClientAlarmBenchmarkService"
+          class="com.dianping.puma.alarm.core.service.memory.MemoryClientAlarmBenchmarkService" />
+
+    <bean id="pumaClientAlarmStrategyService"
+          class="com.dianping.puma.alarm.core.service.memory.MemoryClientAlarmStrategyService" />
+
+    <bean id="pumaClientAlarmMetaService"
+          class="com.dianping.puma.alarm.core.service.memory.MemoryClientAlarmMetaService" />
+
+    <bean id="emailService"
+          class="com.dianping.puma.alarm.core.monitor.notify.service.memory.MemoryEmailService"/>
+
+    <bean id="weChatService"
+          class="com.dianping.puma.alarm.core.monitor.notify.service.memory.MemoryWeChatService"/>
+
+    <bean id="smsService"
+          class="com.dianping.puma.alarm.core.monitor.notify.service.memory.MemorySmsService"/>
+
+</beans>
